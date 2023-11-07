@@ -1,0 +1,28 @@
+# Do not change version. This is the version of aws buildspec, not the version of your buldspec file.
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16  
+    commands:
+      - echo Installing Mocha...
+      - npm install -g mocha
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - npm install
+      - npm install unit.js
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Compiling the Node.js code
+      - mocha test.js
+      - docker build -t stratus-cs2-react-new-todo:v0.1 .
+      - aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 962804699607.dkr.ecr.us-west-2.amazonaws.com
+      - docker tag stratus-cs2-react-new-todo:v0.1 962804699607.dkr.ecr.us-west-2.amazonaws.com/stratus-cs2-ecr-repo:latest
+      - docker push 962804699607.dkr.ecr.us-west-2.amazonaws.com/stratus-cs2-ecr-repo:latest
+      - docker images
+  post_build:
+    commands:
+      - echo Build completed on `date`
