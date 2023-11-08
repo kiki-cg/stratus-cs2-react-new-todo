@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      terraform: 1.1.0
+    commands:
+      - echo "Installing Terraform"
+      - curl -o terraform.zip https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip
+      - unzip terraform.zip
+      - chmod +x terraform
+      - mv terraform /usr/local/bin/
+  build:
+    commands:
+      - echo "Building infrastructure with Terraform"
+      - cd iac/
+      - terraform init
+      - terraform apply --auto-approve
+  post_build:
+    commands:
+      - echo "Build complete"
