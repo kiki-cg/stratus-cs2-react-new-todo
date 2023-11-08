@@ -17,7 +17,6 @@ phases:
       - echo Compiling the Node.js code
       - echo current folder
       - pwd
-      - ls -ltra
       - cd ./app
       - docker build -t stratus-cs2-react-new-todo:v0.1 .
       - docker tag stratus-cs2-react-new-todo:v0.1 962804699607.dkr.ecr.us-west-2.amazonaws.com/stratus-cs2-ecr-repo:latest
