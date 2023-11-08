@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: stratus-cs2-eks
+    app.kubernetes.io/instance: stratus-cs2-eks-instance
+    app.kubernetes.io/version: '1.0.0'
+    app.kubernetes.io/managed-by: kubectl
+  name: stratus-cs2-eks-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stratus-cs2-eks
+  template:
+    metadata:
+      labels:
+        app: stratus-cs2-eks
+    spec:
+      containers:
+        - image: 962804699607.dkr.ecr.us-west-2.amazonaws.com/stratus-cs2-eks-repo:latest
+        imagePullPolicy: Always
+        name: stratus-cs2-eks-repo
+        ports:
+        - containerPort: 3000
