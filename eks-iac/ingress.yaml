@@ -17,6 +17,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: "stratus-cs2-capstone2-eks-service"
+                name: "stratus-cs2-capstone2-eks"
                 port:
                   number: 3000
