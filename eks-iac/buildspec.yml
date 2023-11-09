@@ -13,7 +13,7 @@ phases:
   pre_build:
     commands:
         - echo Logging into Amazon EKS...
-        
+        - aws sts get-caller-identity
         - aws eks --region us-west-2 update-kubeconfig --name stratus-cs2-capstone2-eks
         - echo check config
         - kubectl config view --minify
