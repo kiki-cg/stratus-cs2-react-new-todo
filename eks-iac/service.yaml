@@ -1,18 +1,19 @@
 apiVersion: v1
 kind: Service
 metadata:
-labels:
-    app.kubernetes.io/name: stratus-cs2-eks
-    app.kubernetes.io/instance: stratus-cs2-eks-instance
+  name: stratus-cs2-capstone2-eks
+  labels:
+    app.kubernetes.io/name: stratus-cs2-capstone2-eks
+    app.kubernetes.io/instance: stratus-cs2-capstone2-eks-instance
     app.kubernetes.io/version: "1.0.0"
     app.kubernetes.io/component: backend
     app.kubernetes.io/managed-by: kubectl
-  name: stratus-cs2-eks
+  
 spec:
   selector:
-    app: stratus-cs2-eks
+    app: stratus-cs2-capstone2-eks
   type: NodePort
   ports:
-    - protocol: TCP
-        port: 80
-        targetPort: 3000
+    - port: 80
+      targetPort: 3000
+      protocol: TCP

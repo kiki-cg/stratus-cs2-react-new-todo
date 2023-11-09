@@ -13,7 +13,8 @@ phases:
   pre_build:
     commands:
         - echo Logging into Amazon EKS...
-        - aws eks --region us-west-2 update-kubeconfig --name stratus-cs2-eks
+        
+        - aws eks --region us-west-2 update-kubeconfig --name stratus-cs2-capstone2-eks
         - echo check config
         - kubectl config view --minify
         - echo check kubectl access
@@ -24,10 +25,10 @@ phases:
     commands:
         - cd ../app
         - pwd
-        - docker build -t stratus-cs2-react-new-todo-eks:v0.1 .
+        - docker build -t stratus-cs2-eks-repo:v0.1 .
   post_build:
     commands:
-        - docker tag stratus-cs2-react-new-todo-eks:v0.1 $ECR_repository_URI:latest
+        - docker tag stratus-cs2-eks-repo:v0.1 $ECR_repository_URI:latest
         - docker push $ECR_repository_URI:latest
         - kubectl apply -f deployment.yaml
         - kubectl apply -f service.yaml

@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "stratus-cs2-capstone2-eks-ingress"
+  namespace: default
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: stratus-cs2-capstone2-eks
+    alb.ingress.kubernetes.io/group.order: '1'
+spec:
+  ingressClassName: alb
+  rules:
+  - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: "stratus-cs2-capstone2-eks-service"
+                port:
+                  number: 8080

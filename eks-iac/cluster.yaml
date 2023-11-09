@@ -2,12 +2,25 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-    name: stratus-cs2-eks #cluster name
+    name: stratus-cs2-capstone2-eks #cluster name
     region: us-west-2 #desired region
+vpc:
+  subnets:
+    private:
+      us-west-2a: {id: "subnet-046c017320788b414"}
+      us-west-2b: {id: "subnet-032eca75b95504bf0"}
+      us-west-2c: {id: "subnet-09ae04538e0b2421a"}
+      
 nodeGroups:
-    - name: stratus-cs2-ng-1 #cluster node group name
-      instanceType: t3.small #desired instance type
+    - name: stratus-cs2-ng1 #cluster node group name workers
+      instanceType: t3.large #desired instance type
       desiredCapacity: 1 #desired nodes count / capacity
+      privateNetworking: true
       ssh:
         allow: false # if true - will use ~/.ssh/id_rsa.pub as the default ssh key
         #publicKeyPath: ~/.ssh/ec2_id_rsa.pub #you can specify the public key path likr this as well
+    - name: stratus-cs2-ng2  # builders
+      instanceType: t3.large
+      desiredCapacity: 1
+      privateNetworking: true
+  
