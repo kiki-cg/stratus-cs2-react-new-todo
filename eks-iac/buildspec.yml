@@ -2,13 +2,14 @@ version: 0.2
 
 env:
   variables:
-    ECR_repository_URI: "962804699607.dkr.ecr.us-west-2.amazonaws.com/stratus-cs2-eks-repo:latest"
+    ECR_repository_URI: "962804699607.dkr.ecr.us-west-2.amazonaws.com/stratus-cs2-eks-repo"
     
     
 phases:
   install:
     commands:
         - echo Installing app dependencies...
+        - echo $ECR_repository_URI
         - curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.9/2020-11-02/bin/linux/amd64/kubectl
         - chmod +x ./kubectl
         - mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
