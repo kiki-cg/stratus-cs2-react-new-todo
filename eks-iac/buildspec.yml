@@ -32,12 +32,14 @@ phases:
     commands:
         - pwd
         - cd ./app
-        - pwd
+        
         - docker build -t stratus-cs2-eks-repo:v0.1 .
   post_build:
     commands:
         - docker tag stratus-cs2-eks-repo:v0.1 $ECR_repository_URI:latest
         - docker push $ECR_repository_URI:latest
+        - pwd
+        - cd ../eks-iac
         - kubectl apply -f deployment.yaml
         - kubectl apply -f service.yaml
         - kubectl rollout restart -f deployment.yaml
