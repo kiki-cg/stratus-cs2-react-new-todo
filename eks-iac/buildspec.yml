@@ -1,4 +1,10 @@
 version: 0.2
+
+env:
+  variables:
+    ECR_repository_URI: "962804699607.dkr.ecr.us-west-2.amazonaws.com/stratus-cs2-eks-repo:latest"
+    
+    
 phases:
   install:
     commands:
