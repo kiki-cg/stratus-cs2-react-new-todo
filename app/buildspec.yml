@@ -32,7 +32,8 @@ phases:
       - docker push $ECR_repository_URI:$IMAGE_TAG
       - echo Writing image definitions file...
       - cd ..
-      - printf '[{"name":"stratus-cs2-task-definition","imageUri":"%s"}]' $ECR_repository_URI:$IMAGE_TAG >  $CODEBUILD_SRC_DIR/imagedefinitions.json
+      - printf '[{"name":"stratus-cs2-task-definition","imageUri":"%s"}]' $ECR_repository_URI:$IMAGE_TAG >  imagedefinitions.json
+      - cat imagedefinitions.json
       - pwd
       - ls -ltra
 artifacts:
