@@ -1,0 +1,235 @@
+https://docs.google.com/document/d/1s0USJpW6Ww7uQjWJl8A_H71HruHN3qlAqE2CVcCOIn4/edit#heading=h.5vgqshqm9jzu
+
+Cloud Foundations - Capital Group (23rd October, 2023)
+Useful Links for this session
+Virtual Machine for labs - https://training.datacouch.io/pluralsight/ 
+password: student-$#71
+AWS account login for labs - https://dc-lab.signin.aws.amazon.com/console 
+password: student-$1#71 
+Instructor profile - Mayank Pandey
+Park your doubts here anytime
+Review the open questions here 
+Help for the training VM here
+AWS Region to be used - Oregon (us-west-2)
+
+
+Team Details
+
+Team
+Team Members
+
+1
+Ashley Jones,
+Ben Poei,
+Denny Chen,
+Nepal Singh,
+Wilkensley Thervil,
+2
+Dennis Christians,
+Kiki Li,
+Meena Palaniappan,
+Michael O'Leary,
+3
+Bao Huynh,
+Christian Martano,
+Ganesh Muthumarayan,
+Mary Muench,
+Paul Dixon,
+4
+Alfredo Gonzalez,
+Ignacio Salas,
+Malik Coleman,
+Pulkit Singla,
+Travis Wisecup,
+5
+Keith Cunningham,
+Kenny Dai,
+Omar Mann,
+Rajesh Koppada,
+
+
+Lab Details
+IMPORTANT: Please remember to create resources with a unique name so that you can identify them. Do not use the default name given in the lab instructions. This is because we are using a shared AWS account, so we can not have 2 or more resources (like lambda, etc.) with the same exact name. Also, please delete all the resources created during a lab, after completing the lab.
+
+Slides for download - here
+
+AWS CLI 
+Configure AWS credentials on your training VM - 
+Place the following in your ~/.profile file at the bottom, and replace the values in brackets with your generated creds:
+export AWS_ACCESS_KEY_ID=[The access key ID provided or that you created above]
+export AWS_SECRET_ACCESS_KEY=[The secret access key provided or that you created above]
+export AWS_DEFAULT_REGION=us-west-2
+Then source your new .profile and ensure environment has the appropriate env vars set:
+source ~/.profile
+env | grep AWS
+The above should output something like:
+AWS_ACCESS_KEY_ID=xxxxxx
+AWS_SECRET_ACCESS_KEY=xxxxxxx
+AWS_DEFAULT_REGION=us-west-2
+Having done that, we should be ready to move on!
+Enable auto-completion - https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html. You are using bash shell on the Ubuntu VM.
+In VS Code > Extensions > Install “HashiCorp Terraform”.
+IAM
+https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html (DEMO)
+https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_managed-policies.html
+Team Exercise - 
+Refer - https://github.com/varoonsahgal/cg-cloud-foundations/wiki/EC2-IAM-and-Roles-lab  
+Permissions Boundary - https://github.com/varoonsahgal/cg-cloud-foundations/wiki/Permissions-boundary-lab 
+EC2
+https://github.com/varoonsahgal/cg-cloud-foundations/wiki/EC2-Lab 
+https://github.com/varoonsahgal/cg-cloud-foundations/wiki/EC2-IAM-and-Roles-lab 
+Auto-Scaling EC2 instances
+https://catalog.workshops.aws/general-immersionday/en-US/basic-modules/10-ec2/ec2-auto-scaling/ec2-auto-scaling (please use t2.micro instances). 
+RDS
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/TUT_WebAppWithRDS.html 
+https://github.com/varoonsahgal/cg-cloud-foundations/wiki/RDS-Lab 
+Aurora 
+https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_GettingStartedAurora.CreatingConnecting.AuroraPostgreSQL.html 
+https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/TUT_WebAppWithRDS.html 
+ElastiCache
+https://github.com/varoonsahgal/cg-cloud-foundations/wiki/Elasticache-lab 
+DynamoDB
+https://aws.amazon.com/getting-started/hands-on/create-nosql-table/ 
+https://github.com/varoonsahgal/cg-cloud-foundations/wiki/Dynamo-DB-Lab 
+Optional: https://aws.amazon.com/getting-started/hands-on/create-manage-nonrelational-database-dynamodb/   
+S3
+https://docs.aws.amazon.com/AmazonS3/latest/userguide/GetStartedWithS3.html 
+https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html 
+Ensure that you read every page till the end - https://catalog.workshops.aws/general-immersionday/en-US/basic-modules/60-s3/s3 
+For this one, you can use AWS CLI from VS Code terminal (you have your AWS credentials configured already). Read and execute all the commands given below. Try to understand their usage.  https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html#available-commands  
+VPC
+https://github.com/varoonsahgal/cg-cloud-foundations/wiki/VPC-Lab 
+EFS
+https://catalog.workshops.aws/general-immersionday/en-US/basic-modules/60-s3/efs 
+KMS
+Discussion and quick demo
+Lambda 
+https://docs.aws.amazon.com/lambda/latest/dg/with-s3-tutorial.html  (execute the python version, you may have to install some missing packages)
+API Gateway
+https://github.com/varoonsahgal/cg-cloud-foundations/wiki/API-Gateway-plus-Lambda-Lab (execute the python version, you may have to install some missing packages) 
+Serverless WebApp
+https://github.com/varoonsahgal/cg-cloud-foundations/wiki/Wild-Rydes-Lab (use your own IAM user to deal with CodeCommit - generate CodeCommit credentials using your IAM user)
+Step Functions
+https://github.com/varoonsahgal/cg-cloud-foundations/wiki/Step-functions 
+Terraform
+https://github.com/varoonsahgal/cg-cloud-foundations/wiki/Terraform-Lab (TF is already set on your machine, so just execute the actions given)
+https://github.com/varoonsahgal/tf-fundamentals/tree/main/exercises (optional)
+https://github.com/varoonsahgal/tf-fundamentals/tree/main/exercises/07 
+https://github.com/varoonsahgal/tf-fundamentals/tree/main/exercises/08
+https://github.com/varoonsahgal/tf-fundamentals/tree/main/exercises/10 
+https://github.com/varoonsahgal/tf-fundamentals/tree/main/exercises/11 
+Docker 
+Install Docker Desktop on training VM - 
+cd ~
+mkdir dockerlabs
+cd dockerlabs
+wget https://desktop.docker.com/linux/main/amd64/docker-desktop-4.24.2-amd64.deb
+sudo apt-get update
+sudo apt-get install ./docker-desktop-4.24.2-amd64.deb 
+systemctl --user start docker-desktop
+docker ps
+Docker Compose - Lab
+Replace root user with a custom user
+Create a new image with following Dockerfile
+FROM amazonlinux:latest
+RUN yum install shadow-utils -y
+RUN useradd --uid 10000 runner
+USER 10000
+Command: docker build -t secimage:10 .
+Launch a container with this image and get inside it
+docker run -it secimage:10 /bin/bash
+Execute “whoami”
+Create an image from a container (best to use httpd image)
+
+Docker Volume - Lab (best to use httpd image)
+
+Kubernetes
+Kubectl
+https://github.com/varoonsahgal/k8s/blob/main/pod.yaml   - update the image to use the latest nginx image.
+Service - https://github.com/varoonsahgal/k8s/blob/main/service.yaml 
+
+ Replicaset - https://github.com/varoonsahgal/k8s/blob/main/replicaset.yaml 
+
+Deployment - https://github.com/varoonsahgal/k8s/blob/main/deployment.yaml 
+
+ Probe - https://github.com/varoonsahgal/k8s/blob/main/probe.yaml 
+
+
+Terraform detailed - you will utilize this part to create a new VPC as and when required for the upcoming labs.
+Create a custom Production-grade VPC via Terraform
+Delete all other VPCs which you currently have. Do this first please.
+Execute all the steps on the page below. You need to review the complete code and understand every part of it. Specify your unique name for the “environment” variable. You might see some warnings, analyze and resolve it.  https://catalog.us-east-1.prod.workshops.aws/workshops/a1101fcc-c7cf-4dd5-98c4-f599a65056d5/en-US/networking 
+Review the created VPC thoroughly in the AWS console.
+Every person must share one new learning after this exercise.
+
+ECR
+Create a docker image (use httpd:latest) and push it to your ECR repository - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-container-image.html 
+Review your ECR repository and image URI. 
+ECS (Fargate)
+Cluster an ECS cluster with Fargate model. (Refer this)
+Create a Task definition by utilizing the image in ECR repo - https://us-west-2.console.aws.amazon.com/ecs/v2/task-definitions?region=us-west-2 
+Info on Capacity Provider Strategy: 
+The base value designates how many tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined.
+The weight value designates the relative percentage of the total number of launched tasks that should use the specified capacity provider. For example, if you have a strategy that contains two capacity providers, and both have a weight of 1, then when the base is satisfied, the tasks will be split evenly across the two capacity providers. Using that same logic, if you specify a weight of 1 for capacityProviderA and a weight of 4 for capacityProviderB, then for every one task that is run using capacityProviderA, four tasks would use capacityProviderB.
+Create a service using the task definition created earlier. Ensure to use your own VPC and the private subnets only. Do not allocate Public IP. Create your own new Security Group. 
+Review the created service and the launched tasks. Click and review the details of the tasks. Look at the IP details, etc. 
+Launch a Windows EC2 in the Public subnet of your VPC. Specify a key you have and then use it to get Windows password. Use public IP of the instance to RDP into it. OR Launch a Linux Instance in the Public subnet of your VPC. 
+Try to access the private IP of your tasks in a browser. OR use “wget” from the Linux machine.  
+Now, create a public ALB in the public subnets of your VPC. Specify a unique SG which accepts traffic on port 80 inbound. Create a Target Group (IP type) and specify it in the listener.
+Create a new service, in which you specify ALB as well. Notice that you can choose different VPCs within a cluster for every service. 
+You can choose the created ALB, listener and target group. 
+Verify if there are targets registered in the target group behind ALB. Now, access the load balancer Public URL from a browser.
+In the next part of the lab, try to create a new docker image which shows a webpage (myinfo.php) with the machine’s current IP (hint: use php code). Upload this image to ECR and then update your service with the next version of task definition. Then, verify the ALB url again to see the IP of the individual container serving the traffic. You can use this docker image (shorter way) - it shows all the info via PHP, so you don’t have to worry about setting up PHP etc. - https://hub.docker.com/r/erseco/alpine-php-webserver - With this image, see carefully what port needs to be configured. Also, you might have to make some changes in the target group. Think about all the security groups as well. NOTE: if you want you can use this ECR URI for your new task definition - 962804699607.dkr.ecr.us-west-2.amazonaws.com/mk-ecr1:3.0 
+When the page gets loaded (<alb-dns>/index.php), then look for “$_SERVER['SERVER_ADDR']” on the page to see the container’s IP. Refresh the page and see it changing. Here is a sample - http://mk-alb1-509916848.us-west-2.elb.amazonaws.com/index.php 
+When you refresh it multiple times, do you notice any pattern in traffic distribution? 
+
+ECS (EC2 Model) - optional
+https://docs.aws.amazon.com/AmazonECS/latest/developerguide/tutorial-cluster-auto-scaling-console.html
+
+EKS 
+Quick overview of EKS Cluster creation via Management Console (EC2 & Fargate). Please delete the created resources after completing this lab - https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html 
+EKS Cluster creation via “eksctl” and using “kubectl”
+In this lab, you will create EKS Fargate Cluster & see a pod’s interaction with an AWS service (by using an IAM role). Later on you will deploy an application and expose it via Load Balancer as well.
+You should execute this from an EC2 instance (Amazon Linux) launched in the public subnet of your VPC. You can use the “EC2 Instance Connect” option to connect to your public EC2 instance. The reason is that your EKS cluster should be completely private. Though you can create the cluster by executing the command from your Training VM, but you cannot interact with the cluster from your Training VM. Hence, we are using a Public EC2 instance in your VPC. 
+Check for resource names, region value, etc. in every command you are running. At the end of the lab, do not delete the VPC related resources.  
+DO NOT CHANGE : Fargate values and namespace values in this lab. 
+Refer to the instructions given here -   https://github.com/varoonsahgal/cg-cloud-foundations/wiki/EKS-Lab (You will see a few things like VPC, NAT Gateway, etc. already in place for you. Please read the instructions carefully, analyze it and then execute. Ensure that you read every line of the yaml file and update it as required.) You will have to update the cluster name to something unique in the yaml file. The YAML file should be edited very carefully. Ensure that it has all the three private subnets of your VPC. Check all the values in your yaml file, before moving ahead. You can get the YAML file from here as well - https://mayank232234.s3.us-west-2.amazonaws.com/cluster-fargate-4.yaml 
+On successful cluster creation, you will see messages like this. 
+Deploy an app on this EKS cluster (EC2 model)
+This should be executed as a team (one per team). Get together and complete it. 
+Download and follow the instructions in this file 
+ 
+CI/CD 
+CodeBuild
+https://docs.aws.amazon.com/codebuild/latest/userguide/getting-started.html Please use the image as shown below 
+https://docs.aws.amazon.com/codebuild/latest/userguide/sample-docker.html - In this lab, it asks you to have an IAM role for CodeBuild. It would be better to create that role separately and then choose it later on. If you try to create a new role along with the actual flow, it gives issues at times. 
+CodePipeline
+https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-simple-s3.html - You can skip the optional steps on this page. 
+Complete Flow - https://github.com/varoonsahgal/cg-cloud-foundations/wiki/CI-CD-in-AWS - Execute Lab1 to Lab5 in this.
+Capstone 1
+Read and understand this. Though, you should try to use your own custom VPC with this exercise. https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/default_vpc 
+Quick Notes - https://github.com/varoonsahgal/cg-cloud-foundations/wiki/capstone-1-notes 
+https://github.com/varoonsahgal/cg-cloud-foundations/wiki/capstone-1 
+Capstone 2
+The application used here is minimal. It reads the data coming from the API and shows it on the default page. If you are comfortable, you can use any other app as well.  
+https://github.com/varoonsahgal/cg-cloud-foundations/wiki/Capstone-2 
+EKS part
+You should read all the instructions below and then start working.
+It’s better to create the cluster and execute kubectl commands from your Public Linux EC2 instance (and not Cloud9). You should create the cluster and ingress (ALB) manually as explained in the steps as given here . Take the php-service & php-deployment files from here and edit it for CodeBuild steps:
+In service file, update the target port to 3000
+In deployment file, update the image URI and port to 3000
+Read through this document completely (the last part about the permissions for CodeBuild). 
+Only the service and deployment need to be done via CodeBuild. 
+As you already have the image built in ECR (from another pipeline), you can exclude that part from your buildspec file. Just focus on creating deployment and service via your CodeBuild and CodePipeline (triggered from your repo).
+You will get an error, read this post - https://repost.aws/knowledge-center/codebuild-eks-unauthorized-errors . You can execute this from your Public Linux EC2 instance. 
+My repo to refer - https://github.com/mayankpandey20/eks-app 
+At the end, hit the ALB url you got as the result of ingress creation earlier, it should show your app. 
+Start executing now.
+ECS Service Update by Image build CodePipeline 
+Please ensure that you make following changes in your tf file:
+Target group health check settings
+Task definition settings
+ECS Service settings
+Refer to the main.tf file in this repo and compare - https://github.com/mayankpandey20/cap2-infra/blob/main/main.tf 
+
+

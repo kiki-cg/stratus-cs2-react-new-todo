@@ -1,0 +1,30 @@
+eksctl create iamidentitymapping --cluster stratus-cs2-capstone2-eks --arn arn:aws:iam::962804699607:role/service-role/codebuild-stratus-cs2-codebuild-eks-service-role --group system:masters --username codebuild-stratus-cs2-codebuild-eks-service-role --region us-west-2
+
+aws eks update-kubeconfig --region us-west-2 --name stratus-cs2-capstone2-eks
+
+
+aws eks update-kubeconfig --region us-west-2 --name stratus-cs2-eks-cluster
+
+eksctl create iamidentitymapping --cluster stratus-cs2-eks-cluster --arn arn:aws:iam::962804699607:role/stratus-cs2-eks-cluster-role --group system:masters --username stratus-cs2-eks-cluster-role --region us-west-2
+
+
+
+eksctl create iamidentitymapping --cluster stratus-cs2-eks-cluster --arn arn:aws:iam::962804699607:user/participant-12 --group system:masters --username participant-12 --region us-west-2
+
+arn:aws:iam::962804699607:user/participant-12
+
+vi ~/.kube/config
+
+kubectl cluster-info
+
+aws eks describe-cluster --name stratus-cs2-eks-cluster --region us-west-2
+
+eksctl utils associate-iam-oidc-provider  --region us-west-2  --cluster stratus-cs2-capstone2-eks  --approve
+
+aws eks describe-cluster --name stratus-cs2-capstone2-eks --query "cluster.identity.oidc.issuer" --output text
+
+eksctl create iamserviceaccount --cluster stratus-cs2-capstone2-eks --namespace kube-system --name aws-load-balancer-controller --attach-policy-arn arn:aws:iam::962804699607:policy/AWSLoadBalancerControllerIAMPolicy --override-existing-serviceaccounts --approve
+
+sed -i.bak -e 's|your-cluster-name|stratus-cs2-capstone2-eks|' ./v2_5_4_full.yaml
+
+docker tag stratus-cs2-eks-repo:v0.1 $ECR_repository_URI:latest

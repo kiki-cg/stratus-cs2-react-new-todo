@@ -1,0 +1,5 @@
+git pat: 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
+
+git remote remove origin
+git remote add origin https://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@github.com/kiki-cg/stratus-cs2-react-new-todo
+git push
