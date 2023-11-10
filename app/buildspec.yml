@@ -32,5 +32,5 @@ phases:
       - docker push $ECR_repository_URI:$IMAGE_TAG
       - echo Writing image definitions file...
       - printf '[{"name":"stratus-cs2-ecr-repo","imageUri":"%s"}]' $ECR_repository_URI:$IMAGE_TAG > imagedefinitions.json
-  artifacts:
-    files: imagedefinitions.json
+artifacts:
+  files: imagedefinitions.json
